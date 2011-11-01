@@ -1,5 +1,5 @@
 *pss.txt*   Plugin that integrates pss with Vim. This plugin has been heavily
-inpired by the ack plugin for Vim!
+inpired by the ack plugin from Antoine Imbert.
 
 ==============================================================================
 Author:  Bernhard Leiner <bleiner@gmail.com>                      *pss-author*
@@ -10,14 +10,33 @@ INTRODUCTION                                                             *pss*
 
 This plugin is a front for pss.
 
-:Pss[!] [options] {pattern} [{directory}]                               *:pss*
+:Pss[!] [options] {pattern} [{directory}]                               *:Pss*
 
     Search recursively in {directory} (which defaults to the current
     directory) for the {pattern}.  Behaves just like the |:grep| command, but
     will open the |Quickfix| window for you. If [!] is not given the first
     error is jumped to.
 
+:PssFile [options] {pattern} [{directory}]                          *:PssFile*
+
+    Search recursively in {directory} (which defaults to the current
+    directory) for filenames matching the {pattern}.  Behaves just like the
+    |:grep| command, but will open the |Quickfix| window for you.
+
 Files containing the search term will be listed in the split window, along
 with the line number of the occurrence, once for each occurrence.  <Enter> on
 a line in this window will open the file, and place the cursor on the matching
 line.
+
+==============================================================================
+MAPPINGS                                                        *pss-mappings*
+
+The following keyboard shortcuts are available in the quickfix window:
+
+o                   open file (same as enter).
+go                  preview file (open but maintain focus on pss.vim results).
+t                   open in a new tab.
+T                   open in new tab silently.
+v                   open in vertical split.
+gv                  open in vertical split silently.
+q                   close the quickfix window.

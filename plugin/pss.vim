@@ -44,12 +44,21 @@ function! s:Pss(cmd, args)
         botright copen
     endif
 
-    " TODO: Document this!
+    " mappings within the quickfix window
+    "close the quickfix window.
     exec "nnoremap <silent> <buffer> q :ccl<CR>"
+    " open in a new tab.
     exec "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
+    " open in new tab silently.
     exec "nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>"
+    " open file (same as enter)
     exec "nnoremap <silent> <buffer> o <CR>"
+    " preview file (open but maintain focus on pss.vim results).
     exec "nnoremap <silent> <buffer> go <CR><C-W><C-W>"
+    " open in vertical split.
+    exec "nnoremap <silent> <buffer> v <C-W><C-W><C-W>v<C-L><C-W><C-J><CR>"
+    " open in vertical split silently.
+    exec "nnoremap <silent> <buffer> gv <C-W><C-W><C-W>v<C-L><C-W><C-J><CR><C-W><C-J>"
 
     " If highlighting is on, highlight the search keyword.
     if exists("g:psshighlight")
@@ -61,3 +70,4 @@ function! s:Pss(cmd, args)
 endfunction
 
 command! -bang -nargs=* -complete=file Pss call s:Pss('grep<bang>',<q-args>)
+command! -bang -nargs=* -complete=file PssFile call s:Pss('grep<bang> -g', <q-args>)
