@@ -3,7 +3,7 @@
 
 " Location of the pss utility
 if !exists("g:pssprg")
-	let g:pssprg="pss -H --nocolor --column --noheading --nobreak"
+	let g:pssprg="pss --with-filename --nocolor --column --noheading --nobreak"
 endif
 
 function! s:Pss(cmd, args)
